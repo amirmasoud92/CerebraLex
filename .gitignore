@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# Data and generated outputs stay out of version control
+data/
+derivatives/
+models/
+results/
+outputs/
+audit/
+logs/
+reports/

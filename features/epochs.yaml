@@ -1,0 +1,10 @@
+# Epoch store: one target-locked epoch per trial, -1.0 to +2.5 s,
+# on the cluster channels (store epochs-v1). Pre-target
+# measures use -1.0 to 0 s; response-locked segments are cut at each trial's RT.
+lapse_rt_factor: 1.5
+min_valid_responses_per_subject: 10
+windows:
+  - name: epoch
+    tmin_s: -1.0
+    tmax_s: 2.5
+    description: target-locked epoch

@@ -1,0 +1,17 @@
+# Latent state models over the trials of each block.
+# Everything is fitted per frozen fold on training children only; test children are filtered
+# causally with the training-fold parameters.
+name: states-v1
+windows: [prestim, challenge]   # prestim: the state before the stimulus (H1); challenge: secondary
+features: spectral              # block-centred log band power (7 x 129); reve_attnpool as sensitivity
+n_components: 10                # within-fold PCA of standardised block-centred features
+pca_subsample: 50000
+hmm_states: [1, 2, 3, 4, 5]     # K = 1 is the no-dynamics reference; chosen by held-out likelihood
+hmm_restarts: 5                 # initialisation sensitivity reported (plan)
+lgssm_latents: [1, 2, 3, 4]
+inner_validation_fraction: 0.2  # training children held out (by subject hash) for model selection
+ewma_alpha: 0.3                 # causal exponential smoothing: the trivial dynamic baseline
+max_iter: 100
+targets: [rt_s, lapse]
+n_bootstrap: 2000
+seed: 12345

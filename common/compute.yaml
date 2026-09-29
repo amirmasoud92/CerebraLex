@@ -1,0 +1,8 @@
+# Execution backend. 'auto' selects CUDA when available and logs a CPU fallback otherwise.
+device: auto
+cuda_device_index: 0
+precision: bf16          # Ada-generation GPUs support bf16; fp32 is used automatically on CPU
+num_workers: 8
+pin_memory: true
+seed: 12345
+deterministic: true

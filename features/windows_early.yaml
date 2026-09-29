@@ -1,0 +1,10 @@
+# Full-channel window from the target to +1.0 s, for RT decoding
+# from windows that end before the response (E0: 0 to 0.5 s on trials with RT > 0.6 s; E1: 0.5 to 1.0 s
+# on trials with RT > 1.1 s). Store windows-v1-early.
+lapse_rt_factor: 1.5
+min_valid_responses_per_subject: 10
+windows:
+  - name: early
+    tmin_s: 0.0
+    tmax_s: 1.0
+    description: target to +1.0 s, all channels

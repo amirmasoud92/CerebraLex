@@ -1,0 +1,29 @@
+# Frozen REVE-base probe (El Ouahidi et al., NeurIPS 2025, arXiv 2510.21585).
+# Used under the REVE Responsible Use License v1.0: no re-identification or identification of
+# persons from EEG representations.
+# The pinned revisions and file hashes of the snapshots from which the embeddings were computed.
+model:
+  repo: brain-bzh/reve-base
+  revision: dc2a075c287bb2f6c04ee5875bd79535a0f7dba6
+  local_dir: models/reve-base
+  sha256:
+    model.safetensors: 8ecc650619598748286c2457f81f5c6bd12e8bb59db44f7b02af1955c44de8fe
+    modeling_reve.py: 207a9c51218d806ab317eabf4eb6d3234eabe887f48e541ef5580c4b9b45359f
+    configuration_reve.py: 8abbf691a2de914dccb692aa42b987d20815b52dc0642b0db1fd216df4ccbbfb
+    config.json: 5b74a19202d1aaa5d1814b26b720e4184cd0047f28a672834d390318eed05945
+positions:
+  repo: brain-bzh/reve-positions
+  revision: befa5b57a455b77cf302daf610c2e9ed8140bace
+  local_dir: models/reve-positions
+  sha256:
+    model.safetensors: 4b793820b9df0998667deb6c8ce2dbb86b38221d5165c1844bc4971941b13f13
+    position_bank.py: 26ad5d55fb667da7c80bcc8e8512eb35bca33054a3b3e2bcafe4775543aa1cd0
+    configuration_bank.py: 148ac1c41478be7bfbcd1575d68fcf6d75076da5dfdf9f682e6742612cc88f73
+    positions.json: f62ca8d7dd4b88e1422ea17348440a41ed0b73b9ff7d12c3b1229492c9b448a5
+    config.json: 8e89acf4d27cf1d24815add8df771e6cf138b68846e60796db57e36f1ec8d6f8
+target_sfreq: 200.0             # the model's patching assumes 200 Hz (model card)
+amplitude: downstream           # volts * 1e4 = units of 100 uV, as in the authors' downstream loaders
+downstream_scale: 10000.0       # LMDBDataset scale_factor 100 on microvolts; TUAB/TUEV * 1e4 on volts
+zscore_clip_sd: 15.0            # secondary "zscore" mode: block-level channel z-scores clipped at 15 SD
+batch_size: 64
+unseen_releases: [R4, NC]       # absent from REVE's pretraining corpus (appendix B); primary subset

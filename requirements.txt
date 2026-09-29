@@ -1,0 +1,23 @@
+# Python 3.12; the versions used for the paper's results.
+numpy==2.5.3
+scipy==1.18.1
+pandas==3.0.6
+pyarrow==25.0.1
+mne==1.13.2
+mne-icalabel==0.9.0
+python-picard==0.8.2
+pyprep==0.9.0
+pymatreader==1.3.1
+eeglabio==0.1.3
+scikit-learn==1.9.1
+pyriemann==0.12
+statsmodels==0.15.0
+specparam==2.0.0rc7
+pydantic==2.13.5
+pyyaml==6.0.3
+joblib==1.6.0
+threadpoolctl==3.7.0
+h5py==3.16.0
+psutil==7.2.2
+torch==2.14.0
+braindecode==1.8.1

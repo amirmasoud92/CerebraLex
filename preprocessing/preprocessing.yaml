@@ -1,0 +1,37 @@
+# Preprocessing, version preproc-v1.
+version: preproc-v1
+montage: GSN-HydroCel-129        # template layout; individual positions are not distributed
+resample_hz: 250                 # after the 45 Hz low-pass; 200 Hz and 100 Hz are derived later
+crop_pre_margin_s: 1.0           # before the block-start marker
+crop_post_margin_s: 3.0          # after the last trial end (2.4 s response window already included)
+filter:
+  l_freq: 0.5                    # analysis copy high-pass (Widmann 2015; Delorme 2023)
+  h_freq: 45.0                   # low-pass keeps 20/25 Hz flicker, removes 60 Hz mains
+  ica_l_freq: 1.0                # ICA copy high-pass (Winkler 2015)
+  ica_h_freq: 100.0              # ICA copy low-pass: ICLabel was trained on 1-100 Hz data
+  ica_notch: true                # notch the ICA copy: unfiltered 60 Hz mains otherwise spreads over
+                                 # many components and ICLabel labels them all 'line noise' (12-block benchmark)
+  notch_freqs: [60, 120, 180]    # broadband detection copy and (below Nyquist) the ICA copy
+  fir_design: firwin
+bad_channels:
+  ransac: true                   # pyprep NoisyChannels restricted to the published PREP criteria
+                                 # (flat, deviation, HF noise, correlation, SNR, RANSAC); pyprep 0.9's
+                                 # extra spectral test flagged up to 40 channels per block and is not used
+  max_bad_fraction: 0.2          # block excluded above this fraction (specification T1.1); MADE recommends
+                                 # 10% for pediatric data, so n_bad is stored for a 10%/30% sensitivity analysis
+  random_state: 12345
+ica:
+  enabled: true
+  method: picard                 # ortho=False, extended=True: the extended-Infomax solution (MNE docs;
+                                 # Ablin et al. 2018). Benchmark: extended Infomax hit its 500-iteration
+                                 # cap without converging on 10/12 blocks and took up to 80 min on one
+                                 # subject; Picard converged in ~120 iterations with identical results
+                                 # across repeated runs
+  extended: true
+  max_components: 60             # capped at the data rank after interpolation and average reference
+  reject_labels: [eye blink, muscle artifact, heart beat, line noise, channel noise]
+  reject_threshold: 0.8          # ICLabel probability (Pion-Tonachini 2019)
+  random_state: 12345
+n_jobs: 12
+threads_per_job: 2
+hdf5_compression: lzf

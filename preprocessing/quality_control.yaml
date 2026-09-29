@@ -1,0 +1,7 @@
+# Analysis-exclusion rules (applied after preprocessing, before any decoding).
+common_mode_sd_cv_threshold: 0.01  # raw channel-SD coefficient of variation below this = every channel carries
+                                   # the same signal (no differential EEG). Observed gap: 91 blocks <= 0.0036,
+                                   # all others >= 0.017. Raw inter-channel
+                                   # correlation was rejected as a criterion: shared drift pushes normal blocks > 0.99.
+amplitude_outlier_n_mad: 3.0       # Leys et al. 2013 robust rule on log10 median channel SD; sensitivity analysis only
+exclude_common_mode: true

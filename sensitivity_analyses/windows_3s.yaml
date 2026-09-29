@@ -1,0 +1,14 @@
+# Window-length sensitivity analysis (3s windows); names match features/trials_and_windows.yaml so the
+# benchmark configuration applies unchanged. Stored as windows-v1-len3s;
+# the decoding cohort is that of windows-v1.
+lapse_rt_factor: 1.5
+min_valid_responses_per_subject: 10
+windows:
+  - name: prestim
+    tmin_s: -3.0
+    tmax_s: 0.0
+    description: pre-stimulus window, 3s (sensitivity)
+  - name: challenge
+    tmin_s: 0.5
+    tmax_s: 3.5
+    description: post-stimulus window from +0.5 s, 3s (sensitivity)

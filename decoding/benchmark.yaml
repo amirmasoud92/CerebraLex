@@ -1,0 +1,32 @@
+# Behavioural decoding benchmark.
+name: benchmark-v1
+windows: [prestim, challenge]            # defined in features/trials_and_windows.yaml
+targets: [rt_s, lapse]                    # rt_s -> nRMSE (challenge metric); lapse -> AUROC
+models: [mean, demographics, spectral, spectral_aperiodic, riemann, timecourse, eegnet]
+split_file: cerebralex-split-v1.json      # frozen subject-grouped folds, R5 held out
+min_valid_responses_per_subject: 10
+exclude_artifact_windows: true            # features/window_quality.yaml: >10% of channels above 300 uV
+                                          # peak-to-peak, or any channel below 1 uV (flat, dead signal)
+n_bootstrap: 2000                         # subject-level bootstrap for every CI
+ridge_alphas: [0.01, 0.1, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000]
+                                          # up to alpha / n of about 1e3 for ~80k training trials, i.e.
+                                          # from negligible to complete shrinkage of the EEG block
+inner_folds: 3                            # subject-grouped inner CV for alpha selection
+riemann_pca_components: 500               # in-fold PCA of tangent vectors (8,385 dims) for tractability
+riemann_mean_subsample: 4000              # training covariances used for the Riemannian mean
+aperiodic_regions: 10
+aperiodic_include_fit_r2: false           # exponent and offset per region only
+timecourse_bin_ms: 100                    # timing-preserving classical baseline;
+timecourse_pca_components: 500            # settings fixed on a diagnostic run before the full run
+log_fold_scores: false                    # blinded progress logs; scores are written to the run files
+continue_on_model_error: true             # a failing model is recorded as failed and skipped
+eegnet:
+  max_epochs: 40
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.01
+  patience: 6
+  seeds: [0, 1, 2]
+evaluate_holdout_release: true            # train on all CV subjects, test on R5
+subsample_subjects: null                  # set for pilot runs
+seed: 12345

@@ -1,0 +1,12 @@
+# Trial table and analysis windows (seconds relative to the contrast-change onset).
+lapse_rt_factor: 1.5                     # lapse = miss or RT > 1.5 x subject median (specification A.3)
+min_valid_responses_per_subject: 10      # cohort floor, reported as such
+windows:
+  - name: prestim
+    tmin_s: -2.0
+    tmax_s: 0.0
+    description: pre-stimulus vigilance window, the scientific target (H1)
+  - name: challenge
+    tmin_s: 0.5
+    tmax_s: 2.5
+    description: NeurIPS 2025 Challenge 1 window with an external reference score (nRMSE 0.887)

@@ -1,0 +1,9 @@
+# Window-level artifact rules. A window is an artifact window when it is
+# high-amplitude OR flat; artifact windows are excluded from the primary benchmark.
+p2p_threshold_uv: 300.0          # high amplitude: peak-to-peak above this in a channel ...
+max_bad_channel_fraction: 0.10   # ... in more than 10% of channels
+flat_threshold_uv: 1.0           # flat: any channel with peak-to-peak below 1 uV. MNE epoch
+                                 # rejection semantics ("minimum acceptable peak-to-peak amplitude",
+                                 # one channel suffices) with the 1 uV EEG value of the MNE tutorial
+                                 # "Rejecting bad data spans and breaks". Flat windows make
+                                 # covariance matrices singular.

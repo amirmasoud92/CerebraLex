@@ -1,0 +1,5 @@
+# Generated intermediate data (relative to the repository root).
+# Override with the CEREBRALEX_DERIVATIVES_ROOT environment variable.
+root: "derivatives/hbn"
+preprocessing_version: preproc-v1
+manifest_dirname: manifest
