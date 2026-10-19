@@ -6,8 +6,7 @@
 [![Licence: CC BY-SA 4.0](https://img.shields.io/badge/licence-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 ![Held-out replication](https://img.shields.io/badge/replication-held--out%20sample-C0852B.svg)
 
-This repository holds the analysis code for the paper *Children's slow responses arise mainly as decisions unfold:
-EEG decoding with held-out replication in 2,129 children and adolescents* (Ahmadi, manuscript under
+This repository holds the analysis code for the paper *Neural Signals of Children’s Slow Responses Emerge During Decision Formation and Replicate in Held-Out Children* (Ahmadi, manuscript under
 review).
 
 Children's response times swing widely from one trial to the next, and this variability shrinks with age and marks
@@ -122,14 +121,12 @@ intervals can differ from the published ones in the last digit.
 
 If you use this code, please cite the paper:
 
-> Ahmadi, A. (2026). *Children's slow responses arise mainly as decisions unfold: EEG decoding with
-> held-out replication in 2,129 children and adolescents*. Manuscript under review.
+> Ahmadi, A.; Ghorbani Lohesara, F. (2026). *Neural Signals of Children’s Slow Responses Emerge During Decision Formation and Replicate in Held-Out Children*. Manuscript under review.
 
 ```bibtex
 @unpublished{ahmadi_children_slow_responses,
-  author = {Ahmadi, Amirmasoud},
-  title  = {Children's slow responses arise mainly as decisions unfold: {EEG} decoding with
-            held-out replication in 2,129 children and adolescents},
+  author = {Ahmadi, Amirmasoud; Ghorbani Lohesara, Fatemeh},
+  title  = {Neural Signals of Children’s Slow Responses Emerge During Decision Formation and Replicate in Held-Out Children},
   note   = {Manuscript under review},
   year   = {2026}
 }
